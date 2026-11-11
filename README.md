@@ -1,82 +1,166 @@
-# SwayFX Dotfiles
+<div align="center">
+  <h1>SwayFX Dotfiles</h1>
+  <p><strong>A clean, Gruvbox-flavoured Wayland desktop.</strong></p>
+  <p>Personal SwayFX configuration with rounded corners, subtle shadows, smooth animations, and a matching terminal, bar, and launcher.</p>
+  <p>
+    <img src="https://img.shields.io/badge/Compositor-SwayFX-d79921?style=for-the-badge&labelColor=282828" alt="SwayFX">
+    <img src="https://img.shields.io/badge/Theme-Gruvbox-a89984?style=for-the-badge&labelColor=282828" alt="Gruvbox">
+    <img src="https://img.shields.io/badge/Session-Wayland-458588?style=for-the-badge&labelColor=282828" alt="Wayland">
+    <img src="https://img.shields.io/badge/Terminal-Alacritty-8ec07c?style=for-the-badge&labelColor=282828" alt="Alacritty">
+  </p>
+</div>
 
-Distro-agnostic Wayland desktop configuration built around **SwayFX**, styled with a warm **Gruvbox** color palette and **Iosevka Nerd Font**. Originally configured on Gentoo Linux and adaptable to any systemd, OpenRC, runit, or dinit distribution.
+---
 
-<!-- Uncomment and replace path once you add a desktop screenshot -->
-<!-- ![Desktop Preview](preview.png) -->
+## About
 
-## Components & Aesthetics
+These are my personal dotfiles for a SwayFX desktop. The setup uses a warm **Gruvbox** palette, **Iosevka Nerd Font**, and a minimal layout focused on keyboard-driven workflows.
 
-* **Compositor:** SwayFX (borderless windows, `5px` inner/outer gaps, `8px` rounded corners, drop shadows, and `200ms` animations)
-* **Terminal:** Alacritty (`0.9` opacity, `11.5pt` Iosevka Nerd Font, Gruvbox Material palette)
-* **Status Bar:** Waybar (`30px` height with workspace indicators, window title, audio, network, system stats, battery, and tray)
-* **App Launcher:** Wofi (Gruvbox dark theme with `#d79921` yellow selection highlights)
-* **Font:** `Iosevka Nerd Font`
+The configuration was originally put together on **Gentoo Linux**. It can be adapted to other distributions, including systems using OpenRC, runit, or dinit, but a few startup and power-management commands are distribution-specific.
 
-## Repository Structure
+## The desktop
 
-| File | Target Location | Description |
-| :--- | :--- | :--- |
-| `swayfx-config` | `~/.config/sway/config` | SwayFX keybindings, gaps, rounded corners, shadows, and autostart rules |
-| `alacritty.toml` | `~/.config/alacritty/alacritty.toml` | Terminal transparency, font rules, and Gruvbox color scheme |
-| `waybar-config.jsonc` | `~/.config/waybar/config.jsonc` | Bar layout and module configurations |
-| `waybar-style.css` | `~/.config/waybar/style.css` | Waybar Gruvbox styling and workspace states |
-| `wofi-style.css` | `~/.config/wofi/style.css` | Application launcher Gruvbox styling |
-| `DSCN0145.png` | `~/Pictures/DSCN0145.png` | Desktop wallpaper |
+| Component | Configuration |
+| --- | --- |
+| **Compositor** | SwayFX — no window borders, 5px gaps, 8px corners, shadows, 200ms animations |
+| **Terminal** | Alacritty — 90% opacity, Iosevka Nerd Font, Gruvbox colours |
+| **Status bar** | Waybar — workspaces, window title, media, audio, network, system stats, battery, clock, tray |
+| **Application launcher** | Wofi — matching dark Gruvbox theme |
+| **Font** | Iosevka Nerd Font |
+| **Wallpaper** | **~/Pictures/DSCN0145.png** (not included in this repository) |
+
+### Colour palette
+
+| Role | Colour |
+| --- | --- |
+| Background | **#282828** |
+| Secondary background | **#3c3836** |
+| Foreground | **#ebdbb2** |
+| Muted text | **#a89984** |
+| Accent | **#d79921** |
+| Green | **#a9b665** |
+| Red | **#cc241d** |
+
+## What's in the repository?
+
+| File | Install location | Purpose |
+| --- | --- | --- |
+| **swayfx-config** | ~/.config/sway/config | SwayFX settings, autostart, keybindings, gaps, corners, and shadows |
+| **alacritty.toml** | ~/.config/alacritty/alacritty.toml | Terminal font, opacity, and colours |
+| **waybar-config.jsonc** | ~/.config/waybar/config.jsonc | Bar layout and module configuration |
+| **waybar-style.css** | ~/.config/waybar/style.css | Waybar Gruvbox styling |
+| **wofi-style.css** | ~/.config/wofi/style.css | Wofi launcher styling |
+
+## Installation
+
+Install the dependencies listed below first. Then clone the repository:
+
+~~~sh
+git clone https://github.com/Yaffs2/swayfx-dotfiles.git
+cd swayfx-dotfiles
+~~~
+
+Back up any existing configuration you want to keep, then copy the files into place:
+
+~~~sh
+mkdir -p ~/.config/sway ~/.config/alacritty ~/.config/waybar ~/.config/wofi
+
+cp swayfx-config ~/.config/sway/config
+cp alacritty.toml ~/.config/alacritty/alacritty.toml
+cp waybar-config.jsonc ~/.config/waybar/config.jsonc
+cp waybar-style.css ~/.config/waybar/style.css
+cp wofi-style.css ~/.config/wofi/style.css
+~~~
+
+Log out and start a SwayFX session. If SwayFX is already running, reload the config with **Super + Shift + C**.
 
 ## Dependencies
 
-Install the equivalent packages for your distribution:
+Package names vary by distribution. Install the equivalent packages from your distro's repositories.
 
-* **Core Wayland & UI:** `swayfx`, `waybar`, `wofi`, `alacritty`, `swaylock`
-* **Screenshots & Screen Recording:** `grim`, `slurp`, `wl-clipboard`, `wf-recorder`
-* **Audio, Media & Hardware:** `pipewire` / `pulseaudio` (`pactl`), `pavucontrol`, `playerctl`, `brightnessctl`, `xbacklight`
-* **Apps & Fonts:** `thunar`, `iosevka` (Nerd Font patched)
+| Purpose | Programs / packages |
+| --- | --- |
+| **Desktop** | SwayFX, Waybar, Wofi, Alacritty, Thunar, swaylock, swaynag |
+| **Font** | Iosevka Nerd Font |
+| **Screenshots** | grim, slurp, wl-clipboard |
+| **Screen recording** | wf-recorder |
+| **Audio** | PipeWire with PulseAudio compatibility (pactl) or PulseAudio, pavucontrol |
+| **Media keys** | playerctl |
+| **Brightness** | brightnessctl and/or xbacklight |
 
-## Distro & Init System Notes
+Some Waybar modules are optional and need their own services or tools, such as MPD and power-profiles-daemon. Battery, temperature, and power-profile modules also depend on what your hardware and system provide.
 
-* **Audio / PipeWire (`~/.config/sway/config`):** Line 165 launches `/usr/bin/gentoo-pipewire-launcher restart`. On non-Gentoo distributions, replace or remove this line depending on your init system (e.g., `exec pipewire` on OpenRC/runit/dinit, or remove it if `systemd --user` manages PipeWire automatically).
-* **Power Menu (`~/.config/waybar/config.jsonc`):** The `custom/power` module defaults to `systemctl suspend` and `systemctl hibernate`. If you use OpenRC, runit, or dinit, update those actions to `loginctl suspend` / `loginctl hibernate` (or `zzz`).
+## Important setup notes
+
+Review these paths and commands before using the configuration on another system.
+
+- **PipeWire startup:** the Sway config runs **/usr/bin/gentoo-pipewire-launcher restart**. Replace this with your distribution's PipeWire startup method, or remove the line if PipeWire is already managed by a user service.
+- **Power menu:** the Waybar power menu uses **systemctl suspend** and **systemctl hibernate**. Change these actions to commands supported by your system if you do not use systemd.
+- **Wallpaper:** the Sway config expects **~/Pictures/DSCN0145.png**. That image is not tracked here; add your own wallpaper at that path or edit the output configuration.
+- **Waybar helper files:** the Waybar config refers to **mediaplayer.py** and **power_menu.xml** under **~/.config/waybar/**. Those helper files are not included yet. Add them yourself or remove/disable the **custom/media** and **custom/power** modules in the Waybar config.
+
+> **Known config quirk:** the current Print screenshot binding in **swayfx-config** contains a misspelled **~/Pirctures** path. Change it to **~/Pictures** before relying on that shortcut.
 
 ## Keybindings
 
-Modifier key (`$mod`) is set to **Super** (`Mod4`).
+The modifier key is **Super** (Mod4). Most window-management actions also have Vim-style **H / J / K / L** bindings.
 
-### Applications & System
-
-| Shortcut | Action |
-| :--- | :--- |
-| `Super + Return` | Open Alacritty terminal |
-| `Super + D` | Open Wofi app launcher (`drun`) |
-| `Super + E` | Open Thunar file manager |
-| `Super + L` | Lock screen (`swaylock`) |
-| `Super + Shift + Q` | Kill focused window |
-| `Super + Shift + C` | Reload Sway configuration |
-| `Super + Shift + E` | Exit Sway session |
-
-### Window & Workspace Management
+### Apps & session
 
 | Shortcut | Action |
-| :--- | :--- |
-| `Super + Arrow Keys` | Move focus (`Super + H/K` also mapped for left/up) |
-| `Super + Shift + H/J/K/L` | Move focused window (or use `Arrow Keys`) |
-| `Super + 1–0` | Switch to workspace 1–10 |
-| `Super + Shift + 1–0` | Move focused window to workspace 1–10 |
-| `Super + B` / `Super + V` | Split horizontally / vertically |
-| `Super + S` / `W` / `Q` | Switch layout: stacking / tabbed / toggle split |
-| `Super + F` | Toggle fullscreen |
-| `Super + Shift + Space` | Toggle floating mode |
-| `Super + Space` | Toggle focus between tiling and floating windows |
-| `Super + Shift + -` | Move window to scratchpad |
-| `Super + -` | Cycle scratchpad windows |
-| `Super + R` | Enter resize mode (`H/J/K/L` or arrows to resize, `Esc`/`Enter` to exit) |
+| --- | --- |
+| **Super + Return** | Open Alacritty |
+| **Super + D** | Open Wofi |
+| **Super + E** | Open Thunar |
+| **Super + L** | Lock the screen with swaylock |
+| **Super + Shift + Q** | Close the focused window |
+| **Super + Shift + C** | Reload the SwayFX config |
+| **Super + Shift + E** | Open the exit confirmation prompt |
 
-### Screenshots & Screen Recording
+### Windows & workspaces
 
 | Shortcut | Action |
-| :--- | :--- |
-| `Print` | Fullscreen screenshot saved to `~/Pictures/` |
-| `Super + Shift + S` | Region screenshot saved to `~/Pictures/` (`grim` + `slurp`) |
-| `Super + Ctrl + S` | Region screenshot copied to clipboard (`wl-copy`) |
-| `Super + Alt + R` | Start screen recording to `~/Videos/` (`wf-recorder`) |
-| `Super + Alt + S` | Stop active screen recording |
+| --- | --- |
+| **Super + H / J / K / L** | Move focus left / down / up / right |
+| **Super + Arrow keys** | Move focus |
+| **Super + Shift + H / J / K / L** | Move the focused window |
+| **Super + Shift + Arrow keys** | Move the focused window |
+| **Super + 1–0** | Switch to workspaces 1–10 |
+| **Super + Shift + 1–0** | Send the focused window to workspaces 1–10 |
+| **Super + B** / **Super + V** | Split horizontally / vertically |
+| **Super + S** / **Super + W** / **Super + Q** | Stacking / tabbed / toggle split layout |
+| **Super + F** | Toggle fullscreen |
+| **Super + Shift + Space** | Toggle floating mode |
+| **Super + Space** | Switch focus between tiling and floating windows |
+| **Super + A** | Focus the parent container |
+| **Super + Shift + -** | Send the focused window to the scratchpad |
+| **Super + -** | Show/cycle scratchpad windows |
+| **Super + R** | Enter resize mode; use H/J/K/L or arrow keys, then Enter or Esc |
+
+### Screenshots & recording
+
+| Shortcut | Action |
+| --- | --- |
+| **Super + Shift + S** | Save a selected-area screenshot |
+| **Super + Ctrl + S** | Copy a selected-area screenshot to the clipboard |
+| **Super + Alt + R** | Start screen recording |
+| **Super + Alt + S** | Stop screen recording |
+| **Print** | Fullscreen screenshot (see the path note above) |
+
+### Media & hardware keys
+
+| Key | Action |
+| --- | --- |
+| **XF86AudioMute** | Toggle output mute |
+| **XF86AudioLowerVolume** / **XF86AudioRaiseVolume** | Adjust output volume |
+| **XF86AudioMicMute** | Toggle microphone mute |
+| **XF86AudioPlay** / **XF86AudioPause** | Toggle playback |
+| **XF86AudioPrev** / **XF86AudioNext** | Previous / next track |
+| **XF86MonBrightnessDown** / **XF86MonBrightnessUp** | Adjust display brightness |
+
+---
+
+## Notes
+
+- These are personal configuration files, not a universal installer. Review paths, commands, and optional modules before copying them over an existing setup.
+- The repository currently contains configuration files only; helper scripts, the wallpaper, and a screenshot preview are not bundled.
