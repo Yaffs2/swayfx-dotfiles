@@ -10,6 +10,10 @@
   </p>
 </div>
 
+<p align="center">
+  <img src="DSCN0145.png" alt="SwayFX desktop wallpaper" width="900">
+</p>
+
 ---
 
 ## About
@@ -27,7 +31,7 @@ The configuration was originally put together on **Gentoo Linux**. It can be ada
 | **Status bar** | Waybar — workspaces, window title, media, audio, network, system stats, battery, clock, tray |
 | **Application launcher** | Wofi — matching dark Gruvbox theme |
 | **Font** | Iosevka Nerd Font |
-| **Wallpaper** | **~/Pictures/DSCN0145.png** (not included in this repository) |
+| **Wallpaper** | **~/Pictures/DSCN0145.png** (included as `DSCN0145.png`) |
 
 ### Colour palette
 
@@ -50,6 +54,7 @@ The configuration was originally put together on **Gentoo Linux**. It can be ada
 | **waybar-config.jsonc** | ~/.config/waybar/config.jsonc | Bar layout and module configuration |
 | **waybar-style.css** | ~/.config/waybar/style.css | Waybar Gruvbox styling |
 | **wofi-style.css** | ~/.config/wofi/style.css | Wofi launcher styling |
+| **DSCN0145.png** | ~/Pictures/DSCN0145.png | Default desktop wallpaper and README preview |
 
 ## Installation
 
@@ -63,13 +68,14 @@ cd swayfx-dotfiles
 Back up any existing configuration you want to keep, then copy the files into place:
 
 ~~~sh
-mkdir -p ~/.config/sway ~/.config/alacritty ~/.config/waybar ~/.config/wofi
+mkdir -p ~/.config/sway ~/.config/alacritty ~/.config/waybar ~/.config/wofi ~/Pictures
 
 cp swayfx-config ~/.config/sway/config
 cp alacritty.toml ~/.config/alacritty/alacritty.toml
 cp waybar-config.jsonc ~/.config/waybar/config.jsonc
 cp waybar-style.css ~/.config/waybar/style.css
 cp wofi-style.css ~/.config/wofi/style.css
+cp DSCN0145.png ~/Pictures/DSCN0145.png
 ~~~
 
 Log out and start a SwayFX session. If SwayFX is already running, reload the config with **Super + Shift + C**.
@@ -96,7 +102,7 @@ Review these paths and commands before using the configuration on another system
 
 - **PipeWire startup:** the Sway config runs **/usr/bin/gentoo-pipewire-launcher restart**. Replace this with your distribution's PipeWire startup method, or remove the line if PipeWire is already managed by a user service.
 - **Power menu:** the Waybar power menu uses **systemctl suspend** and **systemctl hibernate**. Change these actions to commands supported by your system if you do not use systemd.
-- **Wallpaper:** the Sway config expects **~/Pictures/DSCN0145.png**. That image is not tracked here; add your own wallpaper at that path or edit the output configuration.
+- **Wallpaper:** `DSCN0145.png` is included in this repository. The installation commands copy it to **~/Pictures/DSCN0145.png**, which is the path used by the Sway config. Replace it with your own image if you prefer.
 - **Waybar helper files:** the Waybar config refers to **mediaplayer.py** and **power_menu.xml** under **~/.config/waybar/**. Those helper files are not included yet. Add them yourself or remove/disable the **custom/media** and **custom/power** modules in the Waybar config.
 
 > **Known config quirk:** the current Print screenshot binding in **swayfx-config** contains a misspelled **~/Pirctures** path. Change it to **~/Pictures** before relying on that shortcut.
@@ -163,4 +169,4 @@ The modifier key is **Super** (Mod4). Most window-management actions also have V
 ## Notes
 
 - These are personal configuration files, not a universal installer. Review paths, commands, and optional modules before copying them over an existing setup.
-- The repository currently contains configuration files only; helper scripts, the wallpaper, and a screenshot preview are not bundled.
+- The repository includes the configuration files and `DSCN0145.png` wallpaper. The Waybar helper scripts (`mediaplayer.py` and `power_menu.xml`) are still not bundled.
