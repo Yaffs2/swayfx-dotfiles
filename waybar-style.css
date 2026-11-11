@@ -1,0 +1,35 @@
+* {
+    font-family: "Iosevka Nerd Font";
+    font-size: 13px;
+    border: none;
+    border-radius: 0;
+}
+
+window#waybar {
+    background-color: #282828;
+    color: #ebdbb2;
+}
+
+#workspaces button {
+    padding: 0 8px;
+    color: #a89984;
+    background: transparent;
+}
+
+#workspaces button.focused {
+    background-color: #d79921;
+    color: #282828;
+}
+
+#workspaces button.urgent {
+    background-color: #cc241d;
+    color: #ebdbb2;
+}
+
+#clock, #battery, #pulseaudio, #tray, #cpu, #memory {
+    padding: 0 10px;
+    color: #ebdbb2;
+}
+
+#battery.warning { color: #fabd2f; }
+#battery.critical { color: #fb4934; }

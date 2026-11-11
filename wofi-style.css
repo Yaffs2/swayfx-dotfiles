@@ -1,0 +1,40 @@
+* {
+    font-family: "Iosevka Nerd Font";
+}
+
+window {
+    background-color: #282828;
+}
+
+#outer-box {
+    background-color: #282828;
+}
+
+#input {
+    background-color: #3c3836;
+    color: #ebdbb2;
+}
+
+#scroll {
+    background-color: #282828;
+}
+
+#inner-box {
+    background-color: #282828;
+}
+
+#entry {
+    background-color: #282828;
+}
+
+#entry:selected {
+    background-color: #d79921;
+}
+
+#text {
+    color: #ebdbb2;
+}
+
+#entry:selected #text {
+    color: #282828;
+}
