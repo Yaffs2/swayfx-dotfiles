@@ -1,6 +1,9 @@
 # SwayFX Dotfiles
 
-Distro-agnostic Wayland desktop configuration built around **SwayFX**, styled with a warm **Gruvbox** color palette and **Iosevka Nerd Font**. Originally configured on Gentoo Linux and adaptable to any systemd or OpenRC/runit distribution.
+Distro-agnostic Wayland desktop configuration built around **SwayFX**, styled with a warm **Gruvbox** color palette and **Iosevka Nerd Font**. Originally configured on Gentoo Linux and adaptable to any systemd, OpenRC, runit, or dinit distribution.
+
+<!-- Uncomment and replace path once you add a desktop screenshot -->
+<!-- ![Desktop Preview](preview.png) -->
 
 ## Components & Aesthetics
 
@@ -19,6 +22,7 @@ Distro-agnostic Wayland desktop configuration built around **SwayFX**, styled wi
 | `waybar-config.jsonc` | `~/.config/waybar/config.jsonc` | Bar layout and module configurations |
 | `waybar-style.css` | `~/.config/waybar/style.css` | Waybar Gruvbox styling and workspace states |
 | `wofi-style.css` | `~/.config/wofi/style.css` | Application launcher Gruvbox styling |
+| `DSCN0145.png` | `~/Pictures/DSCN0145.png` | Desktop wallpaper |
 
 ## Dependencies
 
@@ -29,35 +33,10 @@ Install the equivalent packages for your distribution:
 * **Audio, Media & Hardware:** `pipewire` / `pulseaudio` (`pactl`), `pavucontrol`, `playerctl`, `brightnessctl`, `xbacklight`
 * **Apps & Fonts:** `thunar`, `iosevka` (Nerd Font patched)
 
-## Installation
+## Distro & Init System Notes
 
-1. **Clone the repository:**
-   ```bash
-   git clone <your-repo-url> ~/sway-dotfiles
-   cd ~/sway-dotfiles
-   ```
-
-2. **Create configuration directories:**
-   ```bash
-   mkdir -p ~/.config/{sway,alacritty,waybar,wofi}
-   ```
-
-3. **Copy (or symlink) the files to their target paths:**
-   ```bash
-   cp swayfx-config ~/.config/sway/config
-   cp alacritty.toml ~/.config/alacritty/alacritty.toml
-   cp waybar-config.jsonc ~/.config/waybar/config.jsonc
-   cp waybar-style.css ~/.config/waybar/style.css
-   cp wofi-style.css ~/.config/wofi/style.css
-   ```
-
-4. **Distro-Specific Adjustments (`~/.config/sway/config`):**
-   * **Audio / PipeWire:** Line 165 launches `/usr/bin/gentoo-pipewire-launcher restart`. On non-Gentoo distros, replace or remove this line depending on your init system (e.g., `exec pipewire` on OpenRC/runit, or let `systemd --user` manage PipeWire automatically).
-   * **Power Menu (`waybar-config.jsonc`):** The `custom/power` module uses `systemctl suspend` and `systemctl hibernate`. If you use OpenRC, runit, or dinit, update those commands to `loginctl suspend` / `loginctl hibernate` (or `zzz`).
-   * **Wallpaper:** Place an image at `~/Pictures/DSCN0145.png` or update the `output * bg` path.
-
-5. **Reload Sway:**
-   Press `Super + Shift + C` to reload the configuration.
+* **Audio / PipeWire (`~/.config/sway/config`):** Line 165 launches `/usr/bin/gentoo-pipewire-launcher restart`. On non-Gentoo distributions, replace or remove this line depending on your init system (e.g., `exec pipewire` on OpenRC/runit/dinit, or remove it if `systemd --user` manages PipeWire automatically).
+* **Power Menu (`~/.config/waybar/config.jsonc`):** The `custom/power` module defaults to `systemctl suspend` and `systemctl hibernate`. If you use OpenRC, runit, or dinit, update those actions to `loginctl suspend` / `loginctl hibernate` (or `zzz`).
 
 ## Keybindings
 
